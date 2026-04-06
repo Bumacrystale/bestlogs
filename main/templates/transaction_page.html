@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/transaction.css' %}">
+
+<div class="transaction-page">
+    <h2>Transaction History</h2>
+
+    {% if transactions %}
+        {% for transaction in transactions %}
+            <div class="transaction {% if transaction.type == 'purchase' %}debit{% else %}credit{% endif %}">
+                <div class="details">
+                    <p><b>{{ transaction.get_type_display }}</b></p>
+                    <small>{{ transaction.date|date:"d M Y H:i" }}</small>
+                    {% if transaction.reference %}
+                        <small>Ref: {{ transaction.reference }}</small>
+                    {% endif %}
+                </div>
+
+                <div class="amount">
+                    {% if transaction.type == 'purchase' %}
+                        -₦{{ transaction.amount|abs_val }}
+                    {% else %}
+                        +₦{{ transaction.amount|abs_val }}
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No transactions yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

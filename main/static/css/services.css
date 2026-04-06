@@ -1,0 +1,45 @@
+.services-page {
+    margin: 20px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+
+.product:hover {
+    transform: scale(1.02);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.price {
+    color: #6A00FF;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.buy {
+    background: #FF7A00;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.buy:hover {
+    background: #e66f00;
+}

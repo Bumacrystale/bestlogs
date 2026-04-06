@@ -1,0 +1,36 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+<div class="auth-container">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <h2>Login</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="auth-message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <div class="forgot-password">
+            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <p class="auth-switch">
+            Don't have an account?
+            <a href="{% url 'signup' %}">Sign Up</a>
+        </p>
+    </form>
+</div>

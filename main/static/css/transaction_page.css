@@ -1,0 +1,45 @@
+body {
+    background: #f4f6fb;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.transaction-page {
+    margin: 80px 20px 20px 20px; /* leave space for topbar */
+}
+
+.transaction-page h2 {
+    color: #6A00FF;
+    margin-bottom: 15px;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.transaction.credit .amount {
+    color: green;
+    font-weight: bold;
+}
+
+.transaction.debit .amount {
+    color: red;
+    font-weight: bold;
+}
+
+.details p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.details small {
+    color: #555;
+}

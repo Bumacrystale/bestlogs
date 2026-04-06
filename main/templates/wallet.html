@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/wallet.css' %}">
+
+<!-- Wallet Header -->
+<div class="wallet-header">
+
+    <h3>Wallet</h3>
+
+    <p>Current Balance</p>
+
+    <h2>₦{{ balance }}</h2>
+
+    <a href="{% url 'add_funds' %}">
+        <button class="add-funds-btn">Add Funds</button>
+    </a>
+
+</div>
+
+<!-- Transaction History -->
+<div class="transactions">
+
+    <h4>Transaction History</h4>
+
+    {% if transactions %}
+        {% for transaction in transactions %}
+        <div class="transaction">
+
+            <div>
+                <p>
+                    <b>
+                        {% if transaction.type == "fund" %}
+                            Added Funds
+                        {% elif transaction.type == "purchase" %}
+                            Purchase
+                        {% else %}
+                            {{ transaction.type }}
+                        {% endif %}
+                    </b>
+                </p>
+                <small>{{ transaction.date|date:"d M Y, h:i A" }}</small>
+            </div>
+
+            <div class="amount
+                {% if transaction.type == 'fund' %}
+                    credit
+                {% elif transaction.type == 'purchase' %}
+                    debit
+                {% endif %}
+            ">
+                {% if transaction.type == "fund" %}
+                    +₦{{ transaction.amount }}
+                {% elif transaction.type == "purchase" %}
+                    -₦{{ transaction.amount }}
+                {% else %}
+                    ₦{{ transaction.amount }}
+                {% endif %}
+            </div>
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-transaction">No transaction yet</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

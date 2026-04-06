@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/orders.css' %}">
+
+<div class="welcome">
+    <h3>Your Orders</h3>
+    <div class="notice">
+        Click any order to view full product details.
+    </div>
+</div>
+
+<div class="orders-page">
+    {% for order in orders %}
+        <a href="{% url 'order_detail' order.id %}" class="order-link">
+            <div class="product">
+                <div class="product-info">
+                    <b>{{ order.product.name }}</b>
+                    <p>Price: ₦{{ order.price }}</p>
+                    <p>Date: {{ order.created_at|date:"d M Y, h:i A" }}</p>
+                </div>
+            </div>
+        </a>
+    {% empty %}
+        <p class="no-orders">No orders yet</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

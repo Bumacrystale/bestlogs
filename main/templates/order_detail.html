@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/orders.css' %}">
+
+<div class="order-detail-container">
+    <h3>{{ order.product.name }}</h3>
+
+    <div class="order-detail-card">
+        <p><strong>Platform:</strong> {{ order.product.platform }}</p>
+        <p><strong>Year:</strong> {{ order.product.account_year }}</p>
+        <p><strong>Type:</strong> {{ order.product.account_type }}</p>
+        <p><strong>Followers:</strong> {{ order.product.followers }}</p>
+        <p><strong>Price:</strong> ₦{{ order.price }}</p>
+        <p><strong>Order Date:</strong> {{ order.created_at|date:"d M Y, h:i A" }}</p>
+
+        <div class="description-box">
+            <h4>Description</h4>
+            <p>
+                {% if order.product.description %}
+                    {{ order.product.description }}
+                {% else %}
+                    No description available for this product.
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="welcome">
+
+    <h3>Welcome Back!</h3>
+
+    <div class="notice">
+        We do not support fraud and are not responsible for misuse.
+    </div>
+
+</div>
+
+<div class="wallet">
+
+    <p>Your Balance</p>
+
+    <h2>₦{{ balance }}</h2>
+
+    <div class="wallet-buttons">
+
+        <a href="/add-funds/">
+            <button>Add Funds</button>
+        </a>
+
+        <a href="/transactions/">
+            <button>Transactions</button>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="products">
+
+    <h3>Popular Products</h3>
+
+    {% for product in products %}
+    <div class="product">
+
+        <div class="product-info">
+
+            <div class="product-top">
+                {% if product.platform == "Instagram" %}
+                    <i class="fa-brands fa-instagram product-icon"></i>
+                {% elif product.platform == "Facebook" %}
+                    <i class="fa-brands fa-facebook product-icon"></i>
+                {% elif product.platform == "Twitter" %}
+                    <i class="fa-brands fa-x-twitter product-icon"></i>
+                {% elif product.platform == "TikTok" %}
+                    <i class="fa-brands fa-tiktok product-icon"></i>
+                {% elif product.platform == "Snapchat" %}
+                    <i class="fa-brands fa-snapchat product-icon"></i>
+                {% else %}
+                    <i class="fa-solid fa-globe product-icon"></i>
+                {% endif %}
+
+                <b>{{ product.name }}</b>
+            </div>
+
+            <p><strong>Platform:</strong> {{ product.platform }}</p>
+            <p><strong>Year:</strong> {{ product.account_year }}</p>
+            <p><strong>Type:</strong> {{ product.account_type }}</p>
+            <p><strong>Followers:</strong> {{ product.followers }}</p>
+            <p><strong>Available:</strong> {{ product.stock }} pcs</p>
+
+        </div>
+
+        <div class="product-actions">
+            <p class="price">₦{{ product.price }}</p>
+
+            <a href="{% url 'buy_product' product.id %}">
+                <button class="buy">Buy</button>
+            </a>
+        </div>
+
+    </div>
+    {% empty %}
+    <p>No products available at the moment.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

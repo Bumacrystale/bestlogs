@@ -1,0 +1,119 @@
+/* ===============================
+   GENERAL PAGE SETTINGS
+=================================*/
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6fb;
+}
+
+
+/* ===============================
+   PROFILE CONTAINER
+=================================*/
+
+.profile-container{
+    max-width:500px;
+    margin:80px auto 20px auto;
+    background:white;
+    padding:24px;
+    border-radius:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+/* Profile page title */
+
+.profile-container h3{
+    text-align:center;
+    margin-bottom:20px;
+    color:#222;
+}
+
+
+/* ===============================
+   PROFILE PICTURE SECTION
+=================================*/
+
+.profile-picture{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+
+/* Profile image styling */
+
+.profile-picture img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #6A00FF;
+    display:block;
+    margin:0 auto 12px auto;
+}
+
+
+/* Profile picture buttons */
+
+.profile-picture button{
+    display:block;
+    margin:10px auto;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+}
+
+/* Change picture button */
+
+.profile-picture button[type="button"]{
+    background:#6A00FF;
+}
+
+/* Save picture button */
+
+.save-btn{
+    background:#16a34a;
+}
+
+
+/* ===============================
+   USER INFORMATION
+=================================*/
+
+.user-info{
+    margin-top:15px;
+    padding:15px;
+    background:#fafafa;
+    border-radius:12px;
+}
+
+.user-info p{
+    font-size:16px;
+    margin:10px 0;
+    color:#333;
+}
+
+
+/* ===============================
+   BUTTONS
+=================================*/
+
+.logout-btn{
+    display:block;
+    width:100%;
+    padding:12px;
+    margin-top:18px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    background:#FF0000;
+    color:white;
+}

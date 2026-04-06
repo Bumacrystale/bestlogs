@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Funds - BestLogs</title>
+<link rel="stylesheet" href="{% static 'css/add_funds.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="topbar">
+    <div class="menu" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+    <div><b>Add Funds</b></div>
+    <div></div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <h3>Add Money To Wallet</h3>
+        <p class="section-text">
+            Enter the amount you want to fund your wallet with.
+        </p>
+
+        <form class="fund-form" method="POST" action="{% url 'initialize_payment' %}">
+            {% csrf_token %}
+            <input
+                type="number"
+                name="amount"
+                placeholder="Enter amount (₦)"
+                class="amount-input"
+                min="100"
+                required
+            >
+            <button type="submit" class="fund-btn">Proceed to Payment</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function goBack(){
+    window.history.back();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+/* Navigation Drawer */
+
+.drawer {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Drawer when open */
+
+.drawer.active {
+    left: 0;
+}
+
+/* Header inside drawer */
+
+.drawer-header {
+    padding: 25px 20px;
+    background: linear-gradient(135deg,#6A00FF,#8B2CFF);
+    color: white;
+}
+
+.drawer-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.drawer-header p {
+    margin: 5px 0 0 0;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* Navigation links */
+
+.drawer a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.2s;
+}
+
+.drawer a:hover {
+    background: #f7f7ff;
+}
+
+/* Icons */
+
+.drawer i {
+    width: 20px;
+    color: #6A00FF;
+}
+
+/* Overlay */
+
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 900;
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}

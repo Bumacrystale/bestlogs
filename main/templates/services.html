@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="welcome">
+
+<h3>Our Products & Services</h3>
+
+<div class="notice">
+Browse all products and services available for purchase.
+</div>
+
+</div>
+
+
+<!-- Services / Products List -->
+<div class="services-page">
+
+{% for product in products %}
+
+<div class="product">
+
+<div class="product-info">
+
+<b>{{ product.name }}</b>
+
+<p>{{ product.stock }} pcs available</p>
+
+<p class="price">₦{{ product.price }}</p>
+
+</div>
+
+<a href="{% url 'buy_product' product.id %}">
+
+<button class="buy">Buy</button>
+
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

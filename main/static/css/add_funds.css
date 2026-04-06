@@ -1,0 +1,80 @@
+/* =========================
+   ADD FUNDS PAGE
+========================= */
+
+.fund-form{
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.amount-input{
+width:100%;
+padding:16px;
+border-radius:12px;
+border:1px solid #ddd;
+font-size:16px;
+outline:none;
+transition:0.2s;
+}
+
+.amount-input:focus{
+border-color:#6A00FF;
+box-shadow:0 0 0 2px rgba(106,0,255,0.1);
+}
+
+.fund-btn{
+margin-top:5px;
+padding:15px;
+border:none;
+border-radius:12px;
+background:linear-gradient(135deg,#6A00FF,#8B2CFF);
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.2s;
+}
+
+.fund-btn:hover{
+transform:scale(1.02);
+box-shadow:0 5px 15px rgba(106,0,255,0.2);
+}
+
+
+/* =========================
+   PAYMENT METHODS
+========================= */
+
+.payment-option{
+margin-top:15px;
+padding:16px;
+background:white;
+border-radius:12px;
+display:flex;
+align-items:center;
+gap:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+cursor:pointer;
+transition:0.2s;
+}
+
+.payment-option:hover{
+transform:scale(1.02);
+}
+
+.payment-option i{
+font-size:20px;
+color:#6A00FF;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.menu i{
+font-size:18px;
+cursor:pointer;
+}

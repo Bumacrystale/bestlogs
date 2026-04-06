@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+{% load static %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BestLogs</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/add_funds.css' %}">
+<link rel="stylesheet" href="{% static 'css/wallet.css' %}">
+<link rel="stylesheet" href="{% static 'css/drawer.css' %}">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Drawer Overlay -->
+<div class="drawer-overlay" onclick="toggleDrawer()"></div>
+
+<!-- Navigation Drawer -->
+<div id="drawer" class="drawer">
+
+<div class="drawer-header">
+<h3>{{ user.username }}</h3>
+<p>Welcome</p>
+</div>
+
+<a href="{% url 'home' %}">
+<i class="fa fa-home"></i> Home
+</a>
+
+<a href="{% url 'services' %}">
+<i class="fa fa-layer-group"></i> Services
+</a>
+
+<a href="{% url 'orders' %}">
+<i class="fa fa-box"></i> Orders
+</a>
+
+<a href="{% url 'wallet' %}">
+<i class="fa fa-wallet"></i> Wallet
+</a>
+
+</div>
+
+<!-- Topbar -->
+<div class="topbar">
+
+<div class="menu" onclick="toggleDrawer()">☰</div>
+
+<div class="app-title">
+<span class="brand-name">BestLogs</span>
+</div>
+
+{% block topbar_right %}
+<a href="{% url 'profile' %}">
+<div class="profile">
+
+{% if user.is_authenticated and user.profile.profile_picture %}
+<img src="{{ user.profile.profile_picture.url }}" alt="Profile">
+
+{% else %}
+<img src="{% static 'images/profile_icon.png' %}" alt="Profile">
+
+{% endif %}
+
+</div>
+</a>
+{% endblock %}
+
+</div>
+
+<!-- PAGE CONTENT -->
+{% block content %}
+{% endblock %}
+
+<!-- Drawer Script -->
+<script>
+
+function toggleDrawer(){
+
+const drawer = document.getElementById("drawer");
+const overlay = document.querySelector(".drawer-overlay");
+
+drawer.classList.toggle("active");
+overlay.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>

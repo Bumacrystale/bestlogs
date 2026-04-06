@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block topbar_right %}
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+<div class="profile-container">
+
+    <h3>Profile</h3>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Profile Picture -->
+        <div class="profile-picture">
+            {% if user.profile.profile_picture %}
+                <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" id="profileImg">
+            {% else %}
+                <img src="{% static 'images/profile_icon.png' %}" alt="Profile Picture" id="profileImg">
+            {% endif %}
+
+            <input type="file" name="profile_picture" id="profileUpload" accept="image/*" style="display:none">
+
+            <button type="button" onclick="document.getElementById('profileUpload').click()">
+                Change Picture
+            </button>
+
+            <button type="submit" class="save-btn">Save Picture</button>
+        </div>
+    </form>
+
+    <!-- User Info -->
+    <div class="user-info">
+        <p><b>Username:</b> {{ user.username }}</p>
+        <p><b>Email:</b> {{ user.email }}</p>
+    </div>
+
+    <!-- Logout -->
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
+
+</div>
+
+<script>
+const profileUpload = document.getElementById('profileUpload');
+const profileImg = document.getElementById('profileImg');
+
+profileUpload.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            profileImg.src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+
+{% endblock %}
