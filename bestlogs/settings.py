@@ -87,6 +87,12 @@ STORAGES = {
     },
 }
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://bestlogs.up.railway.app',
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
