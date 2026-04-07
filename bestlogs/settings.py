@@ -30,7 +30,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'main.middleware.LoginRequiredMiddleware',
+    # 'main.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'bestlogs.urls'
@@ -81,6 +81,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -101,3 +107,41 @@ FLW_SECRET_KEY = os.getenv('FLW_SECRET_KEY')
 FLW_REDIRECT_URL = os.getenv('FLW_REDIRECT_URL')
 
 
+#
+# LANGUAGE_CODE = 'en-us'
+# TIME_ZONE = 'UTC'
+# USE_I18N = True
+# USE_TZ = True
+#
+# STATIC_URL = 'static/'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+#
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+#
+# EMAIL_HOST_USER = 'bestlogsfeedback@gmail.com'
+# EMAIL_HOST_PASSWORD = 'akhc zmdb uqfk ytgw'
+#
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+#
+# LOGOUT_REDIRECT_URL = 'login'
+# LOGIN_URL = 'login'
+# LOGIN_REDIRECT_URL = 'home'
+#
+#
+# # =========================
+# # FLUTTERWAVE SETTINGS
+# # =========================
+# FLW_PUBLIC_KEY = "FLWPUBK-bf440c08ef5889a363b693ea34911e30-X"
+# FLW_SECRET_KEY = "FLWSECK-b5f8da225aadffb318f2586d831ed348-19d0b97b9bfvt-X"
+# FLW_REDIRECT_URL = "http://127.0.0.1:8000/flutterwave/callback/"
+#
+#
+#
+#
+#
+#
