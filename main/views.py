@@ -310,7 +310,6 @@ def initialize_payment(request):
 # =========================
 # PAYMENT CALLBACK / VERIFY
 # =========================
-@login_required
 def payment_callback(request):
     status = request.GET.get("status")
     tx_ref = request.GET.get("tx_ref")
