@@ -7,13 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BestLogs</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/add_funds.css' %}">
     <link rel="stylesheet" href="{% static 'css/wallet.css' %}">
     <link rel="stylesheet" href="{% static 'css/drawer.css' %}">
 
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
@@ -60,12 +58,9 @@
 
 <body>
 
-    <!-- Drawer Overlay -->
     <div class="drawer-overlay" onclick="toggleDrawer()"></div>
 
-    <!-- Navigation Drawer -->
     <div id="drawer" class="drawer">
-
         <div class="drawer-header">
             <h3>{{ user.username }}</h3>
             <p>Welcome</p>
@@ -86,20 +81,9 @@
         <a href="{% url 'wallet' %}">
             <i class="fa fa-wallet"></i> Wallet
         </a>
-
-        <a href="https://wa.me/2348012345678?text=Hello%20BestLogs%20Support%2C%20I%20need%20help." target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp Support
-        </a>
-
-        <a href="https://t.me/yourtelegramusername" target="_blank">
-            <i class="fab fa-telegram"></i> Telegram Support
-        </a>
-
     </div>
 
-    <!-- Topbar -->
     <div class="topbar">
-
         <div class="menu" onclick="toggleDrawer()">☰</div>
 
         <div class="app-title">
@@ -115,25 +99,21 @@
                 {% endif %}
             </div>
         </a>
-
     </div>
 
-    <!-- PAGE CONTENT -->
     {% block content %}
     {% endblock %}
 
-    <!-- Floating Support Buttons -->
     <div class="support-links">
-        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="whatsapp-btn">
+        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="whatsapp-btn" title="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
 
-        <a href="https://t.me/BestLogsSupport" target="_blank" class="telegram-btn">
+        <a href="https://t.me/BestLogsSupport" target="_blank" class="telegram-btn" title="Telegram">
             <i class="fab fa-telegram"></i>
         </a>
     </div>
 
-    <!-- Drawer Script -->
     <script>
         function toggleDrawer() {
             const drawer = document.getElementById("drawer");
