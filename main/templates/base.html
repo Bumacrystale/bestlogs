@@ -1,8 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+{% load static %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BestLogs</title>
@@ -17,35 +18,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        .support-links {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 1000;
-        }
-
         .support-links a {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             text-decoration: none;
             color: white;
-            font-size: 22px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+            font-size: 24px;
+            line-height: 1;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+            transition: transform 0.2s ease;
         }
 
-        .whatsapp-btn {
-            background-color: #25D366;
-        }
-
-        .telegram-btn {
-            background-color: #0088cc;
+        .support-links a i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -118,11 +114,11 @@
 
     <!-- Floating Support Buttons -->
     <div class="support-links">
-        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="whatsapp-btn" title="WhatsApp">
+        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="whatsapp-btn">
             <i class="fab fa-whatsapp"></i>
         </a>
 
-        <a href="https://t.me/BestLogsSupport" target="_blank" class="telegram-btn" title="Telegram">
+        <a href="https://t.me/BestLogsSupport" target="_blank" class="telegram-btn">
             <i class="fab fa-telegram"></i>
         </a>
     </div>
