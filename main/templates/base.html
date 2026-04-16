@@ -1,9 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-{% load static %}
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BestLogs</title>
@@ -18,39 +17,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
+        .support-links {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
         .support-links a {
             width: 56px;
             height: 56px;
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             text-decoration: none;
             color: white;
-
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         .whatsapp-btn {
-            background: #25D366;
+            background-color: #25D366;
         }
 
         .telegram-btn {
-            background: #0088cc;
+            background-color: #0088cc;
         }
 
         .whatsapp-btn i {
             font-size: 22px;
+            transform: translateY(1px);
         }
 
         .telegram-btn i {
             font-size: 24px;
-        }
-
-        .whatsapp-icon {
-            transform: translateY(1px);
         }
     </style>
 </head>
@@ -105,13 +108,11 @@
 
         <a href="{% url 'profile' %}">
             <div class="profile">
-
                 {% if user.is_authenticated and user.profile.profile_picture %}
                     <img src="{{ user.profile.profile_picture.url }}" alt="Profile">
                 {% else %}
                     <img src="{% static 'images/profile_icon.png' %}" alt="Profile">
                 {% endif %}
-
             </div>
         </a>
 
