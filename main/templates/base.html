@@ -1,99 +1,261 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
 {% load static %}
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BestLogs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BestLogs</title>
 
-<!-- CSS -->
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
-<link rel="stylesheet" href="{% static 'css/add_funds.css' %}">
-<link rel="stylesheet" href="{% static 'css/wallet.css' %}">
-<link rel="stylesheet" href="{% static 'css/drawer.css' %}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/add_funds.css' %}">
+    <link rel="stylesheet" href="{% static 'css/wallet.css' %}">
+    <link rel="stylesheet" href="{% static 'css/drawer.css' %}">
 
-<!-- Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <style>
+        .support-links {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .support-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease;
+        }
+
+        .support-links a:hover {
+            transform: scale(1.08);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .telegram-btn {
+            background: #0088cc;
+        }
+
+        .drawer-divider {
+            margin: 15px 0 10px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .drawer-section-title {
+            font-size: 13px;
+            color: #888;
+            padding: 0 20px 8px 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- Drawer Overlay -->
-<div class="drawer-overlay" onclick="toggleDrawer()"></div>
+    <!-- Drawer Overlay -->
+    <div class="drawer-overlay" onclick="toggleDrawer()"></div>
 
-<!-- Navigation Drawer -->
-<div id="drawer" class="drawer">
+    <!-- Navigation Drawer -->
+    <div id="drawer" class="drawer">
+        <div class="drawer-header">
+            <h3>{{ user.username }}</h3>
+            <p>Welcome</p>
+        </div>
 
-<div class="drawer-header">
-<h3>{{ user.username }}</h3>
-<p>Welcome</p>
-</div>
+        <a href="{% url 'home' %}">
+            <i class="fa fa-home"></i> Home
+        </a>
 
-<a href="{% url 'home' %}">
-<i class="fa fa-home"></i> Home
-</a>
+        <a href="{% url 'services' %}">
+            <i class="fa fa-layer-group"></i> Services
+        </a>
 
-<a href="{% url 'services' %}">
-<i class="fa fa-layer-group"></i> Services
-</a>
+        <a href="{% url 'orders' %}">
+            <i class="fa fa-box"></i> Orders
+        </a>
 
-<a href="{% url 'orders' %}">
-<i class="fa fa-box"></i> Orders
-</a>
+        <a href="{% url 'wallet' %}">
+            <i class="fa fa-wallet"></i> Wallet
+        </a>
 
-<a href="{% url 'wallet' %}">
-<i class="fa fa-wallet"></i> Wallet
-</a>
+        <div class="drawer-divider"></div>
+        <div class="drawer-section-title">Support</div>
 
-</div>
+        <a href="https://wa.me/2348012345678?text=Hello%20BestLogs%20Support%2C%20I%20need%20help." target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp Support
+        </a>
 
-<!-- Topbar -->
-<div class="topbar">
+        <a href="https://t.me/yourtelegramusername" target="_blank">
+            <i class="fab fa-telegram"></i> Telegram Support
+        </a>
+    </div>
 
-<div class="menu" onclick="toggleDrawer()">☰</div>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="menu" onclick="toggleDrawer()">☰</div>
 
-<div class="app-title">
-<span class="brand-name">BestLogs</span>
-</div>
+        <div class="app-title">
+            <span class="brand-name">BestLogs</span>
+        </div>
 
-{% block topbar_right %}
-<a href="{% url 'profile' %}">
-<div class="profile">
+        {% block topbar_right %}
+        <a href="{% url 'profile' %}">
+            <div class="profile">
+                {% if user.is_authenticated and user.profile.profile_picture %}
+                    <img src="{{ user.profile.profile_picture.url }}" alt="Profile">
+                {% else %}
+                    <img src="{% static 'images/profile_icon.png' %}" alt="Profile">
+                {% endif %}
+            </div>
+        </a>
+        {% endblock %}
+    </div>
 
-{% if user.is_authenticated and user.profile.profile_picture %}
-<img src="{{ user.profile.profile_picture.url }}" alt="Profile">
+    <!-- PAGE CONTENT -->
+    {% block content %}
+    {% endblock %}
 
-{% else %}
-<img src="{% static 'images/profile_icon.png' %}" alt="Profile">
+    <!-- Floating Support Buttons -->
+    <div class="support-links">
+        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
 
-{% endif %}
+        <a href="https://t.me/BestLogsSupport" target="_blank" class="telegram-btn" title="Chat on Telegram">
+            <i class="fab fa-telegram"></i>
+        </a>
+    </div>
 
-</div>
-</a>
-{% endblock %}
+    <!-- Drawer Script -->
+    <script>
+        function toggleDrawer() {
+            const drawer = document.getElementById("drawer");
+            const overlay = document.querySelector(".drawer-overlay");
 
-</div>
-
-<!-- PAGE CONTENT -->
-{% block content %}
-{% endblock %}
-
-<!-- Drawer Script -->
-<script>
-
-function toggleDrawer(){
-
-const drawer = document.getElementById("drawer");
-const overlay = document.querySelector(".drawer-overlay");
-
-drawer.classList.toggle("active");
-overlay.classList.toggle("active");
-
-}
-
-</script>
+            drawer.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+    </script>
 
 </body>
 </html>
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+
+<!--<head>-->
+<!--{% load static %}-->
+
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--<title>BestLogs</title>-->
+
+<!--&lt;!&ndash; CSS &ndash;&gt;-->
+<!--<link rel="stylesheet" href="{% static 'css/home.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'css/add_funds.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'css/wallet.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'css/drawer.css' %}">-->
+
+<!--&lt;!&ndash; Icons &ndash;&gt;-->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">-->
+
+<!--</head>-->
+
+<!--<body>-->
+
+<!--&lt;!&ndash; Drawer Overlay &ndash;&gt;-->
+<!--<div class="drawer-overlay" onclick="toggleDrawer()"></div>-->
+
+<!--&lt;!&ndash; Navigation Drawer &ndash;&gt;-->
+<!--<div id="drawer" class="drawer">-->
+
+<!--<div class="drawer-header">-->
+<!--<h3>{{ user.username }}</h3>-->
+<!--<p>Welcome</p>-->
+<!--</div>-->
+
+<!--<a href="{% url 'home' %}">-->
+<!--<i class="fa fa-home"></i> Home-->
+<!--</a>-->
+
+<!--<a href="{% url 'services' %}">-->
+<!--<i class="fa fa-layer-group"></i> Services-->
+<!--</a>-->
+
+<!--<a href="{% url 'orders' %}">-->
+<!--<i class="fa fa-box"></i> Orders-->
+<!--</a>-->
+
+<!--<a href="{% url 'wallet' %}">-->
+<!--<i class="fa fa-wallet"></i> Wallet-->
+<!--</a>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; Topbar &ndash;&gt;-->
+<!--<div class="topbar">-->
+
+<!--<div class="menu" onclick="toggleDrawer()">☰</div>-->
+
+<!--<div class="app-title">-->
+<!--<span class="brand-name">BestLogs</span>-->
+<!--</div>-->
+
+<!--{% block topbar_right %}-->
+<!--<a href="{% url 'profile' %}">-->
+<!--<div class="profile">-->
+
+<!--{% if user.is_authenticated and user.profile.profile_picture %}-->
+<!--<img src="{{ user.profile.profile_picture.url }}" alt="Profile">-->
+
+<!--{% else %}-->
+<!--<img src="{% static 'images/profile_icon.png' %}" alt="Profile">-->
+
+<!--{% endif %}-->
+
+<!--</div>-->
+<!--</a>-->
+<!--{% endblock %}-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; PAGE CONTENT &ndash;&gt;-->
+<!--{% block content %}-->
+<!--{% endblock %}-->
+
+<!--&lt;!&ndash; Drawer Script &ndash;&gt;-->
+<!--<script>-->
+
+<!--function toggleDrawer(){-->
+
+<!--const drawer = document.getElementById("drawer");-->
+<!--const overlay = document.querySelector(".drawer-overlay");-->
+
+<!--drawer.classList.toggle("active");-->
+<!--overlay.classList.toggle("active");-->
+
+<!--}-->
+
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
