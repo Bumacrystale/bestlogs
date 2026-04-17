@@ -14,47 +14,48 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        .support-whatsapp,
-        .support-telegram {
-            position: fixed;
-            right: 20px;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
-            z-index: 9999;
-        }
+<style>
+    .support-whatsapp,
+    .support-telegram {
+        position: fixed;
+        right: 20px;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+        z-index: 9999;
+    }
 
-        .support-whatsapp {
-            bottom: 20px;
-            background-color: #25D366;
-        }
+    .support-whatsapp {
+        bottom: 20px;
+        background-color: #25D366;
+    }
 
-        .support-telegram {
-            bottom: 92px;
-            background-color: #0088cc;
-        }
+    .support-telegram {
+        bottom: 92px;
+        background-color: #0088cc;
+    }
 
-        .support-whatsapp i,
-        .support-telegram i {
-            color: white;
-            line-height: 1;
-        }
+    .support-whatsapp i,
+    .support-telegram i {
+        color: #ffffff;
+        line-height: 1;
+        display: block;
+    }
 
-        .support-whatsapp i {
-            font-size: 28px;
-            transform: translateY(1px);
-        }
+    .support-whatsapp i {
+        font-size: 26px;
+        transform: translateY(1px);
+    }
 
-        .support-telegram i {
-            font-size: 24px;
-            transform: translateY(1px);
-        }
+    .support-telegram i {
+        font-size: 24px;
+        transform: translateY(1px);
+    }
 </style>
 </head>
 <body>
@@ -105,15 +106,13 @@
     {% block content %}
     {% endblock %}
 
-    <div class="support-links">
-        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="support-btn whatsapp-btn" title="WhatsApp Support" aria-label="WhatsApp Support">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+    <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="support-whatsapp" title="WhatsApp Support" aria-label="WhatsApp Support">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
-        <a href="https://t.me/BestLogsSupport" target="_blank" class="support-btn telegram-btn" title="Telegram Support" aria-label="Telegram Support">
-            <i class="fab fa-telegram-plane"></i>
-        </a>
-    </div>
+<a href="https://t.me/BestLogsSupport" target="_blank" class="support-telegram" title="Telegram Support" aria-label="Telegram Support">
+    <i class="fab fa-telegram-plane"></i>
+</a>
 
     <script>
         function toggleDrawer() {
