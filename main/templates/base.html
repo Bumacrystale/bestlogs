@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
 {% load static %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BestLogs</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/add_funds.css' %}">
     <link rel="stylesheet" href="{% static 'css/wallet.css' %}">
     <link rel="stylesheet" href="{% static 'css/drawer.css' %}">
 
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
@@ -22,55 +21,56 @@
             bottom: 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            z-index: 1000;
+            gap: 14px;
+            z-index: 9999;
         }
 
-        .support-links a {
-            width: 56px;
-            height: 56px;
+        .support-btn {
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+            transition: transform 0.2s ease;
+            overflow: hidden;
+        }
+
+        .support-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .support-btn i {
+            color: #ffffff;
+            line-height: 1;
+            display: block;
         }
 
         .whatsapp-btn {
-            background-color: #25D366 !important;
+            background-color: #25D366;
         }
 
         .telegram-btn {
-            background-color: #0088cc !important;
+            background-color: #0088cc;
         }
 
         .whatsapp-btn i {
-            color: #ffffff !important;
-            font-size: 24px;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 28px;
+            transform: translateY(1px);
         }
 
         .telegram-btn i {
-            color: #ffffff !important;
-            font-size: 24px;
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 26px;
+            transform: translateY(1px);
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Drawer Overlay -->
     <div class="drawer-overlay" onclick="toggleDrawer()"></div>
 
-    <!-- Navigation Drawer -->
     <div id="drawer" class="drawer">
         <div class="drawer-header">
             <h3>{{ user.username }}</h3>
@@ -94,7 +94,6 @@
         </a>
     </div>
 
-    <!-- Topbar -->
     <div class="topbar">
         <div class="menu" onclick="toggleDrawer()">☰</div>
 
@@ -113,22 +112,19 @@
         </a>
     </div>
 
-    <!-- Page Content -->
     {% block content %}
     {% endblock %}
 
-    <!-- Floating Support Buttons -->
     <div class="support-links">
-        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="whatsapp-btn" title="WhatsApp Support">
+        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="support-btn whatsapp-btn" title="WhatsApp Support" aria-label="WhatsApp Support">
             <i class="fab fa-whatsapp"></i>
         </a>
 
-        <a href="https://t.me/BestLogsSupport" target="_blank" class="telegram-btn" title="Telegram Support">
+        <a href="https://t.me/BestLogsSupport" target="_blank" class="support-btn telegram-btn" title="Telegram Support" aria-label="Telegram Support">
             <i class="fab fa-telegram-plane"></i>
         </a>
     </div>
 
-    <!-- Drawer Script -->
     <script>
         function toggleDrawer() {
             const drawer = document.getElementById("drawer");
