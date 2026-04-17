@@ -15,57 +15,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        .support-links {
+        .support-whatsapp,
+        .support-telegram {
             position: fixed;
             right: 20px;
-            bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            z-index: 9999;
-        }
-
-        .support-btn {
             width: 58px;
             height: 58px;
             border-radius: 50%;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
-            transition: transform 0.2s ease;
-            overflow: hidden;
+            z-index: 9999;
         }
 
-        .support-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .support-btn i {
-            color: #ffffff;
-            line-height: 1;
-            display: block;
-        }
-
-        .whatsapp-btn {
+        .support-whatsapp {
+            bottom: 20px;
             background-color: #25D366;
         }
 
-        .telegram-btn {
+        .support-telegram {
+            bottom: 92px;
             background-color: #0088cc;
         }
 
-        .whatsapp-btn i {
+        .support-whatsapp i,
+        .support-telegram i {
+            color: white;
+            line-height: 1;
+        }
+
+        .support-whatsapp i {
             font-size: 28px;
             transform: translateY(1px);
         }
 
-        .telegram-btn i {
-            font-size: 26px;
+        .support-telegram i {
+            font-size: 24px;
             transform: translateY(1px);
         }
-    </style>
+</style>
 </head>
 <body>
 
