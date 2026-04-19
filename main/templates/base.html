@@ -6,85 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BestLogs</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/add_funds.css' %}">
     <link rel="stylesheet" href="{% static 'css/wallet.css' %}">
     <link rel="stylesheet" href="{% static 'css/drawer.css' %}">
 
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* =======================
-           SUPPORT BUTTON CONTAINER
-        ======================= */
         .support-container {
             position: fixed;
             right: 20px;
             bottom: 20px;
-
             display: flex;
             flex-direction: column;
             gap: 14px;
-
             z-index: 9999;
         }
 
-        /* =======================
-           BASE BUTTON STYLE
-        ======================= */
         .support-btn {
             width: 58px;
             height: 58px;
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             text-decoration: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
-
             transition: all 0.25s ease;
         }
 
-        /* ICON CENTERING */
-        .support-btn i {
-            color: #ffffff;
-            font-size: 24px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            line-height: 1;
-        }
-
-        /* WHATSAPP */
-        .support-btn.whatsapp {
-            background: #25D366;
-        }
-
-        /* TELEGRAM */
         .support-btn.telegram {
             background: #0088cc;
         }
 
-        /* HOVER EFFECT */
+        .support-btn.whatsapp {
+            background: #25D366;
+        }
+
+        /* Override the conflicting .fab from home.css */
+        .support-btn i.fab,
+        .support-btn i.fa-brands {
+            position: static !important;
+            bottom: auto !important;
+            right: auto !important;
+            width: auto !important;
+            height: auto !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            color: #ffffff !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            line-height: 1 !important;
+            cursor: inherit !important;
+            font-size: 24px !important;
+        }
+
         .support-btn:hover {
             transform: scale(1.08);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Drawer Overlay -->
     <div class="drawer-overlay" onclick="toggleDrawer()"></div>
 
-    <!-- Navigation Drawer -->
     <div id="drawer" class="drawer">
         <div class="drawer-header">
             <h3>{{ user.username }}</h3>
@@ -108,7 +99,6 @@
         </a>
     </div>
 
-    <!-- Topbar -->
     <div class="topbar">
         <div class="menu" onclick="toggleDrawer()">☰</div>
 
@@ -127,26 +117,19 @@
         </a>
     </div>
 
-    <!-- PAGE CONTENT -->
     {% block content %}
     {% endblock %}
 
-    <!-- SUPPORT BUTTONS -->
     <div class="support-container">
-
-        <!-- Telegram (Top) -->
         <a href="https://t.me/BestLogsSupport" target="_blank" class="support-btn telegram" title="Telegram Support">
             <i class="fab fa-telegram-plane"></i>
         </a>
 
-        <!-- WhatsApp (Bottom) -->
         <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="support-btn whatsapp" title="WhatsApp Support">
             <i class="fab fa-whatsapp"></i>
         </a>
-
     </div>
 
-    <!-- SCRIPT -->
     <script>
         function toggleDrawer() {
             const drawer = document.getElementById("drawer");
