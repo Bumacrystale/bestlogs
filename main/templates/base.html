@@ -1,8 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% load static %}
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BestLogs</title>
@@ -17,70 +16,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* =======================
-   SUPPORT BUTTON CONTAINER
-======================= */
-.support-container {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
+        .support-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 9999;
+        }
 
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+        .support-btn {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+            transition: all 0.25s ease;
+        }
 
-    z-index: 9999;
-}
+        .support-btn i {
+            color: #fff;
+            font-size: 24px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* =======================
-   BASE BUTTON STYLE
-======================= */
-.support-btn {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
+        .support-btn.whatsapp {
+            background: #25D366;
+        }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        .support-btn.telegram {
+            background: #0088cc;
+        }
 
-    text-decoration: none;
-
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
-    transition: all 0.25s ease;
-}
-
-/* ICON CENTERING */
-.support-btn i {
-    color: #fff;
-    font-size: 24px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* =======================
-   WHATSAPP
-======================= */
-.support-btn.whatsapp {
-    background: #25D366;
-}
-
-/* =======================
-   TELEGRAM
-======================= */
-.support-btn.telegram {
-    background: #0088cc;
-}
-
-/* =======================
-   HOVER EFFECT
-======================= */
-.support-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-}
+        .support-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -137,13 +115,15 @@
     {% endblock %}
 
     <!-- Floating Buttons -->
-    <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="support-whatsapp" title="WhatsApp Support">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <div class="support-container">
+        <a href="https://t.me/BestLogsSupport" target="_blank" class="support-btn telegram" title="Telegram Support">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
 
-    <a href="https://t.me/BestLogsSupport" target="_blank" class="support-telegram" title="Telegram Support">
-        <i class="fab fa-telegram-plane"></i>
-    </a>
+        <a href="https://wa.me/message/TVVBYN4IS7SAC1" target="_blank" class="support-btn whatsapp" title="WhatsApp Support">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
     <!-- Script -->
     <script>
